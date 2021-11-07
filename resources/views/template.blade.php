@@ -82,8 +82,8 @@
                 </div>
                 <div class="d-flex w-100 justify-content-end mx-2">
                     @if($isAuthorize)
-                        <div class="dropstart ps-1 mx-3">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        <div class="dropstart ps-1 my-2 mx-3">
+                            <a class="btn btn-secondary dropdown-toggle m-auto" href="#" role="button" id="dropdownMenuLink"
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 {{$user->name}}
                             </a>
