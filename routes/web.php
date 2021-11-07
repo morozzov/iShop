@@ -21,6 +21,8 @@ Route::post('/users/signincheck', 'UsersController@signinCheck');
 Route::get('/users/privatezone', 'UsersController@privateZone')->middleware(CheckSignin::class);
 Route::get('/users/logout', 'UsersController@logout');
 
+Route::get('/cart/view/{id}', 'CartController@viewAllItemsByUserId');
+
 //Route::get('/', function () {
 //    return view('template');
 //});

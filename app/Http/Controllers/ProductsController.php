@@ -9,10 +9,19 @@ use function Sodium\add;
 
 class ProductsController extends Controller
 {
+    public function getById($id)
+    {
+        $foundProduct = DB::table('products')->where('id', '=', $id)->get();
+
+        return $foundProduct;
+    }
+
     public function getByCategoryId($id)
     {
         $foundProducts = DB::table('products')->where('category_id', '=', $id)->get();
 
         return view('products.getByCategoryId')->with('products', $foundProducts);
     }
+
+
 }
