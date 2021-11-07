@@ -14,6 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->insert([
+            [
+                'name' => 'Oleg',
+                'email' => 'oleg@mail.ru',
+                'login' => 'oleg',
+                'password' => '123',
+            ]
+        ]);
+
         DB::table('categories')->insert([
             ['name' => 'iPhone'],
             ['name' => 'iPad'],

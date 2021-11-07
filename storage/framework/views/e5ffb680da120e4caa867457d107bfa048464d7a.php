@@ -1,4 +1,11 @@
-<!doctype html>
+<?php
+    use Illuminate\Support\Facades\Session;
+    $user = Session::get('user');
+    $isAuthorize = true;
+    if ($user == null) $isAuthorize = false;
+?>
+
+    <!doctype html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -12,7 +19,7 @@
 
     <script src="<?php echo e(asset('vendor/bootstrap/js/jquery-3.6.0.js')); ?>" rel="stylesheet"></script>
     <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.js')); ?>" rel="stylesheet"></script>
-
+    <link href="<?php echo e(asset('vendor/bootstrap/js/navbar.css')); ?>" rel="stylesheet">
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -34,69 +41,95 @@
 <body>
 
 <header>
-
-    <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
         <div class="container-fluid">
-
 
             <a class="navbar-brand" href="/">Fucking shop</a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
+                    aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExample02">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a  class="nav-link <?php
-                        echo ($_SERVER['REQUEST_URI']=="/productsByCategory/1"?"active":"");
+                        <a class="nav-link <?php
+                        echo($_SERVER['REQUEST_URI'] == "/productsByCategory/1" ? "active" : "");
                         ?>" href="/productsByCategory/1">iPhone</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php
-                        echo ($_SERVER['REQUEST_URI']=="/productsByCategory/2"?"active":"");
+                        echo($_SERVER['REQUEST_URI'] == "/productsByCategory/2" ? "active" : "");
                         ?>" href="/productsByCategory/2">iPad</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php
-                        echo ($_SERVER['REQUEST_URI']=="/productsByCategory/3"?"active":"");
+                        echo($_SERVER['REQUEST_URI'] == "/productsByCategory/3" ? "active" : "");
                         ?>" href="/productsByCategory/3">iPod</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php
-                        echo ($_SERVER['REQUEST_URI']=="/productsByCategory/4"?"active":"");
+                        echo($_SERVER['REQUEST_URI'] == "/productsByCategory/4" ? "active" : "");
                         ?>" href="/productsByCategory/4">Mac</a>
                     </li>
                 </ul>
-                <form>
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                </form>
-                <a class="mx-3" href="">
-                    <img src="<?php echo e(asset('images/icons/basket.svg')); ?>">
-                </a>
+                <div class="d-flex w-100 justify-content-start mx-2">
+                    <form class="">
+                        <input class="form-control bg-dark text-light " type="text" placeholder="Search"
+                               aria-label="Search">
+                    </form>
+                </div>
+                <div class="d-flex w-100 justify-content-end mx-2">
+                    <?php if($isAuthorize): ?>
+                        <div class="dropstart ps-1 mx-3">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php echo e($user->name); ?>
 
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Personal</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="/users/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    <?php else: ?>
+                        <a href="/users/signin" class="badge mx-3">
+                            <button class="btn btn-secondary">Sign in</button>
+                        </a>
+                    <?php endif; ?>
+
+                    <a class="position-relative pe-2 my-2" href="">
+                        <img class="" src="<?php echo e(asset('images/icons/basket.svg')); ?>">
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">10<span
+                                class="visually-hidden">unread messages</span></span>
+                    </a>
+
+                </div>
             </div>
         </div>
     </nav>
-
 </header>
 
 <main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     <div class="album py-5 bg-light min-vh-100">
         <div class="container">
@@ -111,7 +144,7 @@
 <footer class="card-footer">
     <div class="container">
         <p class="float-end">
-            <a  class="link-dark" href="#">Back to top</a>
+            <a class="link-dark" href="#">Back to top</a>
         </p>
         <p class="text-secondary">2021 &copy; RMG</p>
 
