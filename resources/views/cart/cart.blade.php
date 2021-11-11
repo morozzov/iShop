@@ -20,12 +20,12 @@
             @endphp
 
             <div class="container mb-1 bg-white border border-gray rounded-3">
-                <div class="d-flex flex-row media text-muted  ">
+                <div class="d-flex flex-row media text-muted">
                     <div class="form-check align-self-center" id="formCheck">
                         <input class="form-check-input" type="checkbox" id="check" >
                     </div>
 
-                    <img class="img-fluid p-1 align-self-center mb-2 rounded h-25 d-block" style="width: 100px;"
+                    <img class="img-fluid p-1 align-self-center mb-2 rounded h-25 d-block" style="max-height: 10em; width: auto"
                          src="{{asset($product->image_path)}}"
                          data-holder-rendered="true">
 

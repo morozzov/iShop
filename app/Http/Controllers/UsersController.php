@@ -29,6 +29,8 @@ class UsersController extends Controller
         if ($user == null) {
             return "error";
         } else {
+            $cart = DB::table('cart_items')->where('user_id', '=', $user->id)->count();
+            Session::put('cart', $cart);
             Session::put('user', $user);
             return redirect('/');
         }
@@ -42,6 +44,7 @@ class UsersController extends Controller
     public function logout()
     {
         Session::forget('user');
+        Session::forget('cart');
         return redirect('/');
     }
 }

@@ -1,6 +1,8 @@
 <?php
     use Illuminate\Support\Facades\Session;
     $user = Session::get('user');
+    $cart = Session::get('cart');
+    if($cart==null)($cart=0);
     $isAuthorize = true;
     if ($user == null) $isAuthorize = false;
 ?>
@@ -84,7 +86,8 @@
                 <div class="d-flex w-100 justify-content-end mx-2">
                     <?php if($isAuthorize): ?>
                         <div class="dropstart ps-1 my-2 mx-3">
-                            <a class="btn btn-secondary dropdown-toggle m-auto" href="#" role="button" id="dropdownMenuLink"
+                            <a class="btn btn-secondary dropdown-toggle m-auto" href="#" role="button"
+                               id="dropdownMenuLink"
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo e($user->name); ?>
 
@@ -105,16 +108,14 @@
                     <a class="position-relative pe-2 my-2" href="/cart/view">
                         <img class="" src="<?php echo e(asset('images/icons/basket.svg')); ?>">
                         <span
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">10<span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary" id="cart"><?php echo e($cart); ?><span
                                 class="visually-hidden">unread messages</span></span>
                     </a>
-
                 </div>
             </div>
         </div>
     </nav>
 </header>
-
 <main>
 
     

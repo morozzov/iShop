@@ -22,6 +22,8 @@ class CartController extends Controller
     public function addNewItemToUser($productId)
     {
         $user = Session::get('user');
+        $cart = Session::get('cart');
+        Session::put('cart', $cart + 1);
         $userId = $user->id;
 
         $cartItem = new CartItem();

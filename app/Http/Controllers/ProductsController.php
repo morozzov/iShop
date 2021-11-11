@@ -18,7 +18,7 @@ class ProductsController extends Controller
 
     public function getByCategoryId($id)
     {
-        $foundProducts = DB::table('products')->where('category_id', '=', $id)->get();
+        $foundProducts = DB::table('products')->where('category_id', '=', $id)->orderBy('name')->get();
 
         return view('products.getByCategoryId')->with('products', $foundProducts);
     }

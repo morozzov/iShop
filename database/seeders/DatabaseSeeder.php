@@ -40,6 +40,22 @@ class DatabaseSeeder extends Seeder
                 'category_id' => 1
             ],
             [
+                'name' => 'iPhone 13 Pro',
+                'description' => 'A dramatically more powerful camera system. A display so responsive, every interaction feels new again. The world’s fastest smartphone chip. Exceptional durability. And a huge leap in battery life.',
+                'image_path' => 'images/products/iphone13pro.png',
+                'price' => 1500,
+                'rating' => 4.7,
+                'category_id' => 1
+            ],
+            [
+                'name' => 'iPhone 13',
+                'description' => 'Your new superpower.',
+                'image_path' => 'images/products/iphone13.png',
+                'price' => 1000,
+                'rating' => 4.3,
+                'category_id' => 1
+            ],
+            [
                 'name' => 'MacBook Air mid 2013',
                 'description' => 'excellent.',
                 'image_path' => 'images/products/macAirMid2013.png',
