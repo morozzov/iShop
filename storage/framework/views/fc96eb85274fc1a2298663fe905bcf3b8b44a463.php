@@ -5,16 +5,20 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col">
-                <div class="card shadow-sm">
-                    <img class="img-thumbnail" src="<?php echo e(asset($product->image_path)); ?>">
+                <div class="card shadow-sm p-1">
+                    <div class="d-flex flex-row media text-muted  ">
+                        <img class="img-fluid col-8 h-25 m-auto" src="<?php echo e(asset($product->image_path)); ?>">
+                    </div>
                     <div class="card-body">
                         <p class="card-title"><?php echo e($product->name); ?></p>
                         <p class="card-text"><?php echo e($product->description); ?></p>
 
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Learn more</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">To card</button>
+                                <a href="/product/<?php echo e($product->id); ?>" class="btn btn-sm btn-outline-dark">
+                                    Learn more
+                                </a>
+                                <button type="button" class="btn btn-sm btn-outline-dark" onclick="buttonAddClick(<?php echo e($product->id); ?>)">To card</button>
                             </div>
 
                             <div class="progress w-25">
@@ -29,9 +33,11 @@
             </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <?php if(count($products)==0): ?>
-            <h3>Category is empty</h3>
+            <p class="text-secondary">Category is empty</p>
         <?php endif; ?>
     </div>
+
+    <script src="<?php echo e(asset('myjs/addNewItemToUser.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/RMG/laraF/resources/views/products/getByCategoryId.blade.php ENDPATH**/ ?>

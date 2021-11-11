@@ -8,11 +8,12 @@
     <!doctype html>
 <html lang="ru">
 <head>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
 
-    <title>Fucking shop | <?php echo $__env->yieldContent('title'); ?></title>
+    <title>Is it shop? | <?php echo $__env->yieldContent('title'); ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo e(asset('vendor/bootstrap/css/bootstrap.css')); ?>" rel="stylesheet">
@@ -44,7 +45,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="/">Fucking shop</a>
+            <a class="navbar-brand" href="/">Is it shop?</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
                     aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,7 +102,7 @@
                         </a>
                     <?php endif; ?>
 
-                    <a class="position-relative pe-2 my-2" href="">
+                    <a class="position-relative pe-2 my-2" href="/cart/view">
                         <img class="" src="<?php echo e(asset('images/icons/basket.svg')); ?>">
                         <span
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">10<span

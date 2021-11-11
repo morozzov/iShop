@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('image_path');
             $table->integer('price');
             $table->double('rating');
-            $table->bigInteger('category_id');
+            $table->unsignedBigInteger('category_id');
         });
     }
 

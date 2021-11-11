@@ -11,9 +11,9 @@ class ProductsController extends Controller
 {
     public function getById($id)
     {
-        $foundProduct = DB::table('products')->where('id', '=', $id)->get();
+        $foundProduct = DB::table('products')->where('id', '=', $id)->get()->first();
 
-        return $foundProduct;
+        return view('products.getById')->with('product', $foundProduct);
     }
 
     public function getByCategoryId($id)
@@ -22,6 +22,4 @@ class ProductsController extends Controller
 
         return view('products.getByCategoryId')->with('products', $foundProducts);
     }
-
-
 }

@@ -2,25 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Models\CartItem;
+use App\Models\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
-    public function viewAllItemsByUserId($id)
+    public function viewAllItemsByUserId()
     {
-        $findRows = DB::table('cart_items')->where('user_id', '=', $id)->get();
-
-        $foundProducts = array();
-        foreach ($findRows as $row)
-        {
-           array_push($foundProducts, DB::table('products')->where('id', '=', $row->product_id)->get()[0]);
+        $user = Session::get('user');
+        if ($user == null) return redirect("/");
+        else {
+            $cartItems = CartItem::where('user_id', '=', $user->id)->get();
+            return view('cart.cart')->with('cartItems', $cartItems);
         }
+    }
 
-        $findRow = $findRows[1];
+    public function addNewItemToUser($productId)
+    {
+        $user = Session::get('user');
+        $userId = $user->id;
 
-        return view('cart.cart')->with('products', $foundProducts);
+        $cartItem = new CartItem();
+        $cartItem->user_id = $userId;
+        $cartItem->product_id = $productId;
+        $cartItem->save();
     }
 }

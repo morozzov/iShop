@@ -11,6 +11,6 @@ class CartItem extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class, "cart_items_product_id_foreign");
+        return $this->belongsTo(Product::class);
     }
 }
