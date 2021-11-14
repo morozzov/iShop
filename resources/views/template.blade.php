@@ -1,8 +1,6 @@
 @php
     use Illuminate\Support\Facades\Session;
     $user = Session::get('user');
-    $cart = Session::get('cart');
-    if($cart==null)($cart=0);
     $isAuthorize = true;
     if ($user == null) $isAuthorize = false;
 @endphp
@@ -22,6 +20,8 @@
 
     <script src="{{asset('vendor/bootstrap/js/jquery-3.6.0.js')}}" rel="stylesheet"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.js')}}" rel="stylesheet"></script>
+    <script src="{{asset('myjs/cart.js')}}"></script>
+
     <link href="{{asset('vendor/bootstrap/js/navbar.css')}}" rel="stylesheet">
     <style>
         .bd-placeholder-img {
@@ -83,7 +83,7 @@
                                aria-label="Search">
                     </form>
                 </div>
-                <div class="d-flex w-100 justify-content-end mx-2">
+                <div class="d-flex w-100 justify-content-end me-4">
                     @if($isAuthorize)
                         <div class="dropstart ps-1 my-2 mx-3">
                             <a class="btn btn-secondary dropdown-toggle m-auto" href="#" role="button"
@@ -93,8 +93,7 @@
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Personal</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="/users/settings">Settings</a></li>
                                 <li><a class="dropdown-item" href="/users/logout">Logout</a></li>
                             </ul>
                         </div>
@@ -107,30 +106,20 @@
                     <a class="position-relative pe-2 my-2" href="/cart/view">
                         <img class="" src="{{asset('images/icons/basket.svg')}}">
                         <span
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary" id="cart">{{$cart}}<span
-                                class="visually-hidden">unread messages</span></span>
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+                            id="cartCountItems">0</span>
                     </a>
+                    @if($isAuthorize)
+                        <script>
+                            getCountItemsByUserId({{$user->id}});
+                        </script>
+                    @endif
                 </div>
             </div>
         </div>
     </nav>
 </header>
 <main>
-
-    {{--    <section class="py-5 text-center container">--}}
-    {{--        <div class="row py-lg-5">--}}
-    {{--            <div class="col-lg-6 col-md-8 mx-auto">--}}
-    {{--                <h1 class="fw-light">Album example</h1>--}}
-    {{--                <p class="lead text-muted">Something short and leading about the collection below—its contents, the--}}
-    {{--                    creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it--}}
-    {{--                    entirely.</p>--}}
-    {{--                <p>--}}
-    {{--                    <a href="#" class="btn btn-primary my-2">Main call to action</a>--}}
-    {{--                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>--}}
-    {{--                </p>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
 
     <div class="album py-5 bg-light min-vh-100">
         <div class="container">

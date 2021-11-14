@@ -8,8 +8,10 @@
         @foreach($products as $product)
             <div class="col">
                 <div class="card shadow-sm p-1">
-                    <div class="d-flex flex-row media text-muted  ">
-                        <img class="img-fluid col-8 h-25 m-auto" src="{{asset($product->image_path)}}">
+                    <div class="d-flex justify-content-center">
+                        <a href="/product/{{$product->id}}" class="">
+                            <img class="img-fluid col-8 m-auto align-self-center d-block" src="{{asset($product->image_path)}}">
+                        </a>
                     </div>
                     <div class="card-body">
                         <p class="card-title">{{$product->name}}</p>
@@ -20,12 +22,15 @@
                                 <a href="/product/{{$product->id}}" class="btn btn-sm btn-outline-dark">
                                     Learn more
                                 </a>
-                                <button type="button" class="btn btn-sm btn-outline-dark" onclick="buttonAddClick({{$product->id}})">To card</button>
+                                <button type="button" class="btn btn-sm btn-outline-dark"
+                                        onclick="buttonAddClick({{$product->id}})">To card
+                                </button>
                             </div>
 
                             <div class="progress w-25">
                                 <div class="progress-bar bg-dark" role="progressbar"
-                                     style="width: {{$product->rating*20}}%" aria-valuenow="25" aria-valuemin="0"
+                                     style="width: {{$product->rating*20}}%" aria-valuenow="25"
+                                     aria-valuemin="0"
                                      aria-valuemax="100">{{$product->rating}}</div>
                             </div>
                             <small class="text-muted">${{$product->price}}</small>
@@ -38,6 +43,4 @@
             <p class="text-secondary">Category is empty</p>
         @endif
     </div>
-
-    <script src="{{asset('myjs/addNewItemToUser.js')}}"></script>
 @endsection

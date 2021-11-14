@@ -18,13 +18,17 @@ use App\Http\Middleware\ChecksigninAjax;
 Route::get('/productsByCategory/{id}', 'ProductsController@getByCategoryId');
 Route::get('/', 'PagesController@home');
 Route::get('/users/signin', 'UsersController@signin');
+Route::get('/users/settings', 'UsersController@settings')->middleware(CheckSignin::class);
 Route::post('/users/signincheck', 'UsersController@signinCheck');
+Route::post('/users/save', 'UsersController@save')->middleware(CheckSignin::class);;
 Route::get('/users/privatezone', 'UsersController@privateZone')->middleware(CheckSignin::class);
 Route::get('/users/logout', 'UsersController@logout');
 Route::get('/product/{id}', 'ProductsController@getById');
 Route::get('/cart/view', 'CartController@viewAllItemsByUserId')->middleware(CheckSignin::class);
 Route::post('/cart/add/{productId}', 'CartController@addNewItemToUser')->middleware(ChecksigninAjax::class);
-
+Route::post('/cart/delete/{id}', 'CartController@deleteItemById')->middleware(ChecksigninAjax::class);
+Route::post('/cart/getCountItems/{userId}', 'CartController@getCountItemsByUserId')->middleware(ChecksigninAjax::class);
+Route::post('/cart/getPriceItems/{userId}', 'CartController@getPriceItemsByUserId')->middleware(ChecksigninAjax::class);
 
 //Route::get('/', function () {
 //    return view('template');

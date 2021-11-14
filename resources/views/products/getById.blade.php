@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title')Products
+@section('title'){{$product->name}}
 @endsection
 
 @section('content')

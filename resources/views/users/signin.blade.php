@@ -37,11 +37,12 @@
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
         <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" name="login">
+            <input type="text" class="form-control lgn" id="floatingInput" name="login" placeholder="Login">
             <label for="floatingInput">Login</label>
         </div>
+
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" name="password">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
 
@@ -50,7 +51,7 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-100 btn btn-lg btn-outline-dark" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
     </form>
 </main>

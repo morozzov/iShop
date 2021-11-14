@@ -31,4 +31,25 @@ class CartController extends Controller
         $cartItem->product_id = $productId;
         $cartItem->save();
     }
+
+    public function deleteItemById($id)
+    {
+        CartItem::destroy($id);
+    }
+
+    public function getCountItemsByUserId($userId)
+    {
+        return CartItem::where('user_id', '=', $userId)->count();
+    }
+
+    public function getPriceItemsByUserId($userId)
+    {
+        $cartItems = CartItem::where('user_id', '=', $userId)->get();
+        $price = 0;
+
+        foreach ($cartItems as $cartItem) {
+            $price += $cartItem->product->price;
+        }
+        return $price;
+    }
 }
