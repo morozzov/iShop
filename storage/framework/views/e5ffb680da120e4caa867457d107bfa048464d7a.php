@@ -21,6 +21,7 @@
     <script src="<?php echo e(asset('vendor/bootstrap/js/jquery-3.6.0.js')); ?>" rel="stylesheet"></script>
     <script src="<?php echo e(asset('vendor/bootstrap/js/bootstrap.bundle.js')); ?>" rel="stylesheet"></script>
     <script src="<?php echo e(asset('myjs/cart.js')); ?>"></script>
+    <script src="<?php echo e(asset('myjs/search.js')); ?>"></script>
 
     <link href="<?php echo e(asset('vendor/bootstrap/js/navbar.css')); ?>" rel="stylesheet">
     <style>
@@ -38,8 +39,6 @@
             }
         }
     </style>
-
-
 </head>
 <body>
 
@@ -78,9 +77,10 @@
                     </li>
                 </ul>
                 <div class="d-flex w-100 justify-content-start mx-2">
-                    <form class="">
-                        <input class="form-control bg-dark text-light " type="text" placeholder="Search"
-                               aria-label="Search">
+                    <form class="" method="post" action="/search">
+                        <?php echo csrf_field(); ?>
+                        <input class="form-control bg-dark text-light " type="text" name="request" placeholder="Search"
+                               aria-label="Search" value="">
                     </form>
                 </div>
                 <div class="d-flex w-100 justify-content-end me-4">

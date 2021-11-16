@@ -16,6 +16,15 @@ class ProductsController extends Controller
         return view('products.getById')->with('product', $foundProduct);
     }
 
+    public function getBySearch(Request $request)
+    {
+
+
+        $request = $request->input('request');
+        $foundProducts = DB::table('products')->where('name', 'LIKE', '%' . $request . '%')->orWhere('description', 'LIKE', '%' . $request . '%')->get();
+        return view('products.getByCategoryId')->with('products', $foundProducts);
+    }
+
     public function getByCategoryId($id)
     {
         $foundProducts = DB::table('products')->where('category_id', '=', $id)->orderBy('name')->get();

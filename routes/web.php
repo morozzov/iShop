@@ -24,6 +24,7 @@ Route::post('/users/save', 'UsersController@save')->middleware(CheckSignin::clas
 Route::get('/users/privatezone', 'UsersController@privateZone')->middleware(CheckSignin::class);
 Route::get('/users/logout', 'UsersController@logout');
 Route::get('/product/{id}', 'ProductsController@getById');
+Route::post('/search', 'ProductsController@getBySearch');
 Route::get('/cart/view', 'CartController@viewAllItemsByUserId')->middleware(CheckSignin::class);
 Route::post('/cart/add/{productId}', 'CartController@addNewItemToUser')->middleware(ChecksigninAjax::class);
 Route::post('/cart/delete/{id}', 'CartController@deleteItemById')->middleware(ChecksigninAjax::class);
