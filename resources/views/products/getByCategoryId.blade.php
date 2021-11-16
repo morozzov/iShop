@@ -4,13 +4,18 @@
 @endsection
 
 @section('content')
+    @php
+        use \Illuminate\Support\Facades\Session;
+        $user = Session::get('user');
+    @endphp
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         @foreach($products as $product)
             <div class="col">
                 <div class="card shadow-sm p-1">
                     <div class="d-flex justify-content-center">
                         <a href="/product/{{$product->id}}" class="">
-                            <img class="img-fluid col-8 m-auto align-self-center d-block" src="{{asset($product->image_path)}}">
+                            <img class="img-fluid col-8 m-auto align-self-center d-block"
+                                 src="{{asset($product->image_path)}}">
                         </a>
                     </div>
                     <div class="card-body">
@@ -23,7 +28,7 @@
                                     Learn more
                                 </a>
                                 <button type="button" class="btn btn-sm btn-outline-dark"
-                                        onclick="buttonAddClick({{$product->id}})">To card
+                                        onclick="buttonAddClick({{$product->id}},{{$user->id}})">To card
                                 </button>
                             </div>
 
@@ -42,5 +47,6 @@
         @if(count($products)==0)
             <p class="text-secondary">Category is empty</p>
         @endif
+
     </div>
 @endsection

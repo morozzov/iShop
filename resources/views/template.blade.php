@@ -118,6 +118,7 @@
         </div>
     </nav>
 </header>
+
 <main>
 
     <div class="album py-5 bg-light min-vh-100">
@@ -140,9 +141,7 @@
     </div>
 </footer>
 
-
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
 
 </body>
 </html>

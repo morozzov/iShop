@@ -1,10 +1,11 @@
-function buttonAddClick(productId) {
+function buttonAddClick(productId, userId) {
     $.ajax({
         url: "/cart/add/" + productId,
         type: "POST",
         data: {"_token": $('meta[name="csrf-token"]').attr('content')},
 
         success: function (data) {
+            getCountItemsByUserId(userId);
             alert("Added successfully");
         },
 
@@ -23,8 +24,10 @@ function buttonDeleteClick(id, userId) {
         success: function (data) {
             let cartId = "#cart_" + id;
             $(cartId)[0].remove();
+            getCountItemsByUserId(userId);
             alert("Deleted successfully");
 
+            getPriceItemsByUserId(userId)
             getCountItemsByUserId(userId);
         },
 
@@ -61,7 +64,7 @@ function getPriceItemsByUserId(userId) {
         },
 
         error: function (msg) {
-            alert("Get cart count error: " + msg.responseJSON.message);
+            alert("Get cart price error: " + msg.responseJSON.message);
         }
     });
 }

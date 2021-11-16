@@ -4,6 +4,10 @@
 @endsection
 
 @section('content')
+    @php
+        use \Illuminate\Support\Facades\Session;
+        $user = Session::get('user');
+    @endphp
     @if($product==null)
         <p class="text-secondary">Product not found</p>
     @else
@@ -30,7 +34,7 @@
                     <h5 class="text-secondary">${{$product->price}}</h5>
                 </div>
 
-                <button class="btn btn-outline-dark" onclick="buttonAddClick({{$product->id}})">To cart</button>
+                <button class="btn btn-outline-dark" onclick="buttonAddClick({{$product->id}},{{$user->id}})">To cart</button>
             </div>
         </div>
     @endif
