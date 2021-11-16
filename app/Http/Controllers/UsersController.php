@@ -54,11 +54,13 @@ class UsersController extends Controller
 
         if ($password != null) {
             if ($password == $password2) {
-
                 $affected = User::where('id', '=', $user->id)->update(['login' => $login,'name' => $name, 'email' => $email, 'password' => $password]);
             }
+            else{
+                return "error";
+            }
         } else {
-            $affected = User::where('id', '=', $user->id)->update(['name' => $login, 'email' => $email]);
+            $affected = User::where('id', '=', $user->id)->update(['login' => $login,'name' => $name, 'email' => $email]);
         }
 
 
@@ -72,7 +74,7 @@ class UsersController extends Controller
             return "error";
         } else {
             Session::put('user', $user);
-            return redirect('/');
+            return redirect('/users/settings');
         }
     }
 

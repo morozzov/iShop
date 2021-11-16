@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <div class="p-3 mb-4 bg-light rounded-3">
+    <div class="p-3 mb-5 bg-light rounded-3">
         <div class="container-fluid py-3">
             <h1 class="display-5 fw-bold">Is it shop?</h1>
             <p class="col-md-8 fs-4">You will decide. But, we're the best among the best. There is no reason for doubt.
