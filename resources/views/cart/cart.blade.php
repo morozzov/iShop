@@ -18,7 +18,7 @@
             <div class="d-flex flex-row media justify-content-start">
                 <p class="text-muted mx-4 me-1 ">Total cost:</p>
                 <p class="align-self-start me-2 card-text" id="cartPrice">$0</p>
-                <a href="/purchases/make" class="btn btn-outline-dark ms-auto">Buy this</a>
+                <button onclick="buttonPurchaseClick()" class="btn btn-outline-dark ms-auto">Buy this</button>
             </div>
         </div>
         @foreach($cartItems as $cartItem)
@@ -42,7 +42,7 @@
                     </p>
 
                     <button class="align-self-center ms-auto btn btn-outline-danger"
-                            onclick="buttonDeleteClick({{$cartItem->id}},{{$user->id}})">Delete
+                            onclick="buttonDeleteClick({{$cartItem->id}})">Delete
                     </button>
 
                 </div>
@@ -51,7 +51,7 @@
         @endforeach
 
         <script>
-            getPriceItemsByUserId({{$user->id}});
+            getPriceItemsByUserId();
         </script>
     @endif
 @endsection

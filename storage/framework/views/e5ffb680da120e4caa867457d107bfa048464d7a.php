@@ -83,7 +83,7 @@
                     </form>
                 </div>
                 <div class="d-flex w-100 justify-content-end me-4">
-                    <?php if($isAuthorize): ?>
+                    <?php if(isset($user)): ?>
                         <div class="dropstart ps-1 my-2 mx-3">
                             <a class="btn btn-secondary dropdown-toggle m-auto" href="#" role="button"
                                id="dropdownMenuLink"
@@ -98,6 +98,9 @@
                                 <li><a class="dropdown-item" href="/users/logout">Logout</a></li>
                             </ul>
                         </div>
+                        <script>
+                            getCountItemsByUserId();
+                        </script>
                     <?php else: ?>
                         <a href="/users/signin" class="badge mx-3">
                             <button class="btn btn-secondary">Sign in</button>
@@ -110,11 +113,6 @@
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
                             id="cartCountItems">0</span>
                     </a>
-                    <?php if($isAuthorize): ?>
-                        <script>
-                            getCountItemsByUserId(<?php echo e($user->id); ?>);
-                        </script>
-                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -124,7 +122,7 @@
 <main>
 
     <div class="album py-5 bg-light min-vh-100">
-        <div class="container">
+        <div class="container" id="container">
 
             <?php echo $__env->yieldContent('content'); ?>
 

@@ -11,16 +11,15 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         @foreach($products as $product)
             <div class="col">
-                <div class="card shadow-sm p-1">
+                <div class="card shadow-sm p-1"  style="height: 20rem;">
                     <div class="d-flex justify-content-center">
                         <a href="/product/{{$product->id}}" class="">
-                            <img class="img-fluid col-8 m-auto align-self-center d-block"
+                            <img class="img-fluid col-8 m-auto align-self-center d-block"style="max-height: 13rem; width: auto"
                                  src="{{asset($product->image_path)}}">
                         </a>
                     </div>
                     <div class="card-body">
                         <p class="card-title">{{$product->name}}</p>
-                        <p class="card-text">{{$product->description}}</p>
 
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">

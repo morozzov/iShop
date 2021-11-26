@@ -9,16 +9,15 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col">
-                <div class="card shadow-sm p-1">
+                <div class="card shadow-sm p-1"  style="height: 20rem;">
                     <div class="d-flex justify-content-center">
                         <a href="/product/<?php echo e($product->id); ?>" class="">
-                            <img class="img-fluid col-8 m-auto align-self-center d-block"
+                            <img class="img-fluid col-8 m-auto align-self-center d-block"style="max-height: 13rem; width: auto"
                                  src="<?php echo e(asset($product->image_path)); ?>">
                         </a>
                     </div>
                     <div class="card-body">
                         <p class="card-title"><?php echo e($product->name); ?></p>
-                        <p class="card-text"><?php echo e($product->description); ?></p>
 
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">

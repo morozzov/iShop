@@ -37,13 +37,18 @@ class CartController extends Controller
         CartItem::destroy($id);
     }
 
-    public function getCountItemsByUserId($userId)
+    public function getCountItemsByUserId()
     {
+        $user = Session::get('user');
+        $userId = $user->id;
         return CartItem::where('user_id', '=', $userId)->count();
     }
 
-    public function getPriceItemsByUserId($userId)
+    public function getPriceItemsByUserId()
     {
+        $user = Session::get('user');
+        $userId = $user->id;
+
         $cartItems = CartItem::where('user_id', '=', $userId)->get();
         $price = 0;
 

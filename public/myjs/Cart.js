@@ -1,11 +1,11 @@
-function buttonAddClick(productId, userId) {
+function buttonAddClick(productId) {
     $.ajax({
         url: "/cart/add/" + productId,
         type: "POST",
         data: {"_token": $('meta[name="csrf-token"]').attr('content')},
 
         success: function (data) {
-            getCountItemsByUserId(userId);
+            getCountItemsByUserId();
             alert("Added successfully");
         },
 
@@ -15,7 +15,7 @@ function buttonAddClick(productId, userId) {
     });
 }
 
-function buttonDeleteClick(id, userId) {
+function buttonDeleteClick(id) {
     $.ajax({
         url: "/cart/delete/" + id,
         type: "POST",
@@ -24,11 +24,11 @@ function buttonDeleteClick(id, userId) {
         success: function (data) {
             let cartId = "#cart_" + id;
             $(cartId)[0].remove();
-            getCountItemsByUserId(userId);
-            alert("Deleted successfully");
 
-            getPriceItemsByUserId(userId)
-            getCountItemsByUserId(userId);
+            getPriceItemsByUserId()
+            getCountItemsByUserId();
+
+            alert("Deleted successfully");
         },
 
         error: function (msg) {
@@ -37,9 +37,27 @@ function buttonDeleteClick(id, userId) {
     });
 }
 
-function getCountItemsByUserId(userId) {
+function buttonPurchaseClick() {
     $.ajax({
-        url: "/cart/getCountItems/" + userId,
+        url: "/purchases/make",
+        type: "POST",
+        data: {"_token": $('meta[name="csrf-token"]').attr('content')},
+
+        success: function (data) {
+            $("#container")[0].innerHTML = ' <h3>Cart is empty</h3>';
+
+            alert("Thank you for purchase");
+        },
+
+        error: function (msg) {
+            alert("Get cart count error: " + msg.responseJSON.message);
+        }
+    });
+}
+
+function getCountItemsByUserId() {
+    $.ajax({
+        url: "/cart/getCountItems",
         type: "POST",
         data: {"_token": $('meta[name="csrf-token"]').attr('content')},
 
@@ -53,9 +71,9 @@ function getCountItemsByUserId(userId) {
     });
 }
 
-function getPriceItemsByUserId(userId) {
+function getPriceItemsByUserId() {
     $.ajax({
-        url: "/cart/getPriceItems/" + userId,
+        url: "/cart/getPriceItems",
         type: "POST",
         data: {"_token": $('meta[name="csrf-token"]').attr('content')},
 
