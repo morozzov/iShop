@@ -28,10 +28,9 @@
                                     Learn more
                                 </a>
                                 <button type="button" class="btn btn-sm btn-outline-dark"
-                                        onclick="buttonAddClick({{$product->id}},{{$user->id}})">To card
+                                        onclick="buttonAddClick({{$product->id}}@if($user!=null),{{$user->id}}@endif)">To card
                                 </button>
                             </div>
-
                             <div class="progress w-25">
                                 <div class="progress-bar bg-dark" role="progressbar"
                                      style="width: {{$product->rating*20}}%" aria-valuenow="25"

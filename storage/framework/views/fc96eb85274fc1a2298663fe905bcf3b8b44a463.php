@@ -26,10 +26,9 @@
                                     Learn more
                                 </a>
                                 <button type="button" class="btn btn-sm btn-outline-dark"
-                                        onclick="buttonAddClick(<?php echo e($product->id); ?>,<?php echo e($user->id); ?>)">To card
+                                        onclick="buttonAddClick(<?php echo e($product->id); ?><?php if($user!=null): ?>,<?php echo e($user->id); ?><?php endif; ?>)">To card
                                 </button>
                             </div>
-
                             <div class="progress w-25">
                                 <div class="progress-bar bg-dark" role="progressbar"
                                      style="width: <?php echo e($product->rating*20); ?>%" aria-valuenow="25"

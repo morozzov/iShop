@@ -30,6 +30,8 @@ Route::post('/cart/add/{productId}', 'CartController@addNewItemToUser')->middlew
 Route::post('/cart/delete/{id}', 'CartController@deleteItemById')->middleware(ChecksigninAjax::class);
 Route::post('/cart/getCountItems/{userId}', 'CartController@getCountItemsByUserId')->middleware(ChecksigninAjax::class);
 Route::post('/cart/getPriceItems/{userId}', 'CartController@getPriceItemsByUserId')->middleware(ChecksigninAjax::class);
+Route::get('/purchases/make', 'PurchasesController@makePurchase')->middleware(Checksignin::class);
+Route::get('/purchases/get', 'PurchasesController@getByUserId')->middleware(Checksignin::class);
 
 //Route::get('/', function () {
 //    return view('template');

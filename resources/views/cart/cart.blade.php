@@ -14,6 +14,13 @@
         <h3>Cart is empty</h3>
     @else
         <h1 class="h3 mb-3 fw-normal">Your cart</h1>
+        <div class="container p-2 my-3 bg-white border border-gray rounded-3">
+            <div class="d-flex flex-row media justify-content-start">
+                <p class="text-muted mx-4 me-1 ">Total cost:</p>
+                <p class="align-self-start me-2 card-text" id="cartPrice">$0</p>
+                <a href="/purchases/make" class="btn btn-outline-dark ms-auto">Buy this</a>
+            </div>
+        </div>
         @foreach($cartItems as $cartItem)
             @php
                 $product = $cartItem->product;
@@ -42,13 +49,7 @@
             </div>
 
         @endforeach
-        <div class="container p-2 my-3 bg-white border border-gray rounded-3">
-            <div class="d-flex flex-row media justify-content-start">
-                <p class="text-muted mx-4 me-1 ">Total cost:</p>
-                <p class="align-self-start me-2 card-text" id="cartPrice">$0</p>
-                <button class="btn btn-outline-dark ms-auto">Buy this</button>
-            </div>
-        </div>
+
         <script>
             getPriceItemsByUserId({{$user->id}});
         </script>

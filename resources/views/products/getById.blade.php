@@ -34,7 +34,7 @@
                     <h5 class="text-secondary">${{$product->price}}</h5>
                 </div>
 
-                <button class="btn btn-outline-dark" onclick="buttonAddClick({{$product->id}},{{$user->id}})">To cart</button>
+                <button class="btn btn-outline-dark" onclick="buttonAddClick({{$product->id}}@if($user!=null),{{$user->id}}@endif)">To cart</button>
             </div>
         </div>
     @endif
